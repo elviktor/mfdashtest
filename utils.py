@@ -12,12 +12,12 @@ def get_header(app):
             html.Div(
                 [
                     html.Img(
-                        src=app.get_asset_url("dash-financial-logo.png"),
+                        src=app.get_asset_url("CFLJ_transparent_logo_2017_edition_PNG.png"),
                         className="logo",
                     ),
                     html.A(
-                        html.Button("Learn More", id="learn-more-button"),
-                        href="https://plot.ly/dash/pricing/",
+                        html.Button("Full View", id="learn-more-button"),
+                        href="/dash-financial-report/full-view",
                     ),
                 ],
                 className="row",
@@ -25,19 +25,13 @@ def get_header(app):
             html.Div(
                 [
                     html.Div(
-                        [html.H5("Calibre Financial Index Fund Investor Shares")],
+                        [html.H5("Center for Law and Justice")],
                         className="seven columns main-title",
                     ),
                     html.Div(
-                        [
-                            dcc.Link(
-                                "Full View",
-                                href="/dash-financial-report/full-view",
-                                className="full-view-link",
-                            )
-                        ],
-                        className="five columns",
-                    ),
+                        [html.H6("1st Quarter Report")],
+                        className="seven columns main-title",
+                    )
                 ],
                 className="twelve columns",
                 style={"padding-left": "0"},
@@ -57,25 +51,25 @@ def get_menu():
                 className="tab first",
             ),
             dcc.Link(
-                "Price Performance",
+                "1st Quarter Performance",
                 href="/dash-financial-report/price-performance",
                 className="tab",
             ),
             dcc.Link(
-                "Portfolio & Management",
+                "2nd Quarter Strategy",
                 href="/dash-financial-report/portfolio-management",
                 className="tab",
             ),
             dcc.Link(
-                "Fees & Minimums", href="/dash-financial-report/fees", className="tab"
+                "Campaign Summaries", href="/dash-financial-report/fees", className="tab"
             ),
             dcc.Link(
-                "Distributions",
+                "Internal Data",
                 href="/dash-financial-report/distributions",
                 className="tab",
             ),
             dcc.Link(
-                "News & Reviews",
+                "External Data",
                 href="/dash-financial-report/news-and-reviews",
                 className="tab",
             ),
