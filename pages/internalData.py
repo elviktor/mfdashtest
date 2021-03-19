@@ -14,7 +14,6 @@ DATA_PATH = PATH.joinpath("../data").resolve()
 
 df_fund_facts = pd.read_csv(DATA_PATH.joinpath("df_fund_facts.csv"))
 df_price_perf = pd.read_csv(DATA_PATH.joinpath("df_price_perf.csv"))
-df_test = pd.read_csv(DATA_PATH.joinpath("test.csv"))
 
 
 def create_layout(app):
@@ -30,7 +29,7 @@ def create_layout(app):
                         [
                             html.Div(
                                 [
-                                    html.H5("1st Quarter Summary"),
+                                    html.H5("Product Summary"),
                                     html.Br([]),
                                     html.P(
                                         "\
@@ -58,93 +57,16 @@ def create_layout(app):
                             html.Div(
                                 [
                                     html.H6(
-                                        "Phone Records",
-                                        className="subtitle padded",
+                                        ["Fund Facts"], className="subtitle padded"
                                     ),
-                                    dcc.Graph(
-                                        id="graph-1",
-                                        figure={
-                                            "data": [
-                                                go.Bar(
-                                                    x=df_test["date"],
-                                                    y=df_test["black"],
-                                                    marker={
-                                                        "color": "#97151c",
-                                                        "line": {
-                                                            "color": "rgb(255, 255, 255)",
-                                                            "width": 2,
-                                                        },
-                                                    },
-                                                    name="Black",
-                                                ),
-                                                go.Bar(
-                                                    x=df_test["date"],
-                                                    y=df_test["white"],
-                                                    marker={
-                                                        "color": "#dddddd",
-                                                        "line": {
-                                                            "color": "rgb(255, 255, 255)",
-                                                            "width": 2,
-                                                        },
-                                                    },
-                                                    name="White",
-                                                ),
-                                            ],
-                                            "layout": go.Layout(
-                                                autosize=False,
-                                                bargap=0.35,
-                                                font={"family": "Raleway", "size": 10},
-                                                height=200,
-                                                hovermode="closest",
-                                                legend={
-                                                    "x": -0.0228945952895,
-                                                    "y": -0.189563896463,
-                                                    "orientation": "h",
-                                                    "yanchor": "top",
-                                                },
-                                                margin={
-                                                    "r": 0,
-                                                    "t": 20,
-                                                    "b": 10,
-                                                    "l": 30,
-                                                },
-                                                showlegend=True,
-                                                title="",
-                                                width=660,
-                                                xaxis={
-                                                    "autorange": True,
-                                                    "range": [-0.5, 4.5],
-                                                    "showline": True,
-                                                    "title": "",
-                                                    "type": "category",
-                                                },
-                                                yaxis={
-                                                    "autorange": True,
-                                                    "range": [0, 22.9789473684],
-                                                    "showgrid": True,
-                                                    "showline": True,
-                                                    "title": "",
-                                                    "type": "linear",
-                                                    "zeroline": False,
-                                                },
-                                            ),
-                                        },
-                                        config={"displayModeBar": False},
-                                    ),
+                                    html.Table(make_dash_table(df_fund_facts)),
                                 ],
-                                className="twelve columns",
+                                className="six columns",
                             ),
-                        ],
-                        className="row",
-                        style={"margin-bottom": "35px"},
-                    ),
-                    # Row 4B
-                    html.Div(
-                        [
                             html.Div(
                                 [
                                     html.H6(
-                                        "Intake Records",
+                                        "Average annual performance",
                                         className="subtitle padded",
                                     ),
                                     dcc.Graph(
@@ -219,7 +141,7 @@ def create_layout(app):
                                                 },
                                                 showlegend=True,
                                                 title="",
-                                                width=660,
+                                                width=330,
                                                 xaxis={
                                                     "autorange": True,
                                                     "range": [-0.5, 4.5],
@@ -241,7 +163,7 @@ def create_layout(app):
                                         config={"displayModeBar": False},
                                     ),
                                 ],
-                                className="twelve columns",
+                                className="six columns",
                             ),
                         ],
                         className="row",
@@ -253,7 +175,7 @@ def create_layout(app):
                             html.Div(
                                 [
                                     html.H6(
-                                        "Instagram Audience Growth",
+                                        "Hypothetical growth of $10,000",
                                         className="subtitle padded",
                                     ),
                                     dcc.Graph(
@@ -346,10 +268,22 @@ def create_layout(app):
                             html.Div(
                                 [
                                     html.H6(
-                                        "Notable Campaigns",
+                                        "Price & Performance (%)",
                                         className="subtitle padded",
                                     ),
                                     html.Table(make_dash_table(df_price_perf)),
+                                ],
+                                className="six columns",
+                            ),
+                            html.Div(
+                                [
+                                    html.H6(
+                                        "Risk Potential", className="subtitle padded"
+                                    ),
+                                    html.Img(
+                                        src=app.get_asset_url("risk_reward.png"),
+                                        className="risk-reward",
+                                    ),
                                 ],
                                 className="six columns",
                             ),

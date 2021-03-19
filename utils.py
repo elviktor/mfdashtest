@@ -52,25 +52,25 @@ def get_menu():
             ),
             dcc.Link(
                 "1st Quarter Performance",
-                href="/dash-financial-report/price-performance",
+                href="/dash-financial-report/qtr-1-performance",
                 className="tab",
             ),
             dcc.Link(
                 "2nd Quarter Strategy",
-                href="/dash-financial-report/portfolio-management",
+                href="/dash-financial-report/qtr-2-strategy",
                 className="tab",
             ),
             dcc.Link(
-                "Campaign Summaries", href="/dash-financial-report/fees", className="tab"
+                "Campaign Summaries", href="/dash-financial-report/campaigns", className="tab"
             ),
             dcc.Link(
                 "Internal Data",
-                href="/dash-financial-report/distributions",
+                href="/dash-financial-report/internal-data",
                 className="tab",
             ),
             dcc.Link(
                 "External Data",
-                href="/dash-financial-report/news-and-reviews",
+                href="/dash-financial-report/external-data",
                 className="tab",
             ),
         ],
